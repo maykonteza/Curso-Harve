@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <title>Entrar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="login-card">
+        <div class="brand-mark" aria-hidden="true">M</div>
+        <h1>Boas-vindas</h1>
+        <p class="intro">Entre com seus dados para acessar sua conta.</p>
+
+        <form id="login-form">
+            <div class="field">
+                <label for="email">E-mail</label>
+                <input id="email" name="email" type="email" placeholder="voce@exemplo.com" autocomplete="email"
+                    required>
+            </div>
+
+            <div class="field">
+                <label for="password">Senha</label>
+                <input id="password" name="password" type="password" placeholder="Digite sua senha"
+                    autocomplete="current-password" required>
+            </div>
+
+            <button class="submit-button" type="submit">Entrar</button>
+        </form>
+
+        <form id="transaction-form" action="#" method="post" hidden>
+            <h2 id="transaction-heading" tabindex="-1">Dados do lançamento</h2>
+            <div class="field">
+                <label for="transaction-type">Tipo</label>
+                <select id="transaction-type" name="transactionType" required>
+                    <option value="" disabled selected>Selecione entrada ou saída</option>
+                    <option value="entrada">Entrada</option>
+                    <option value="saida">Saída</option>
+                </select>
+            </div>
+
+            <div class="field">
+                <label for="description">Descrição</label>
+                <textarea id="description" name="description" placeholder="Descreva o lançamento"
+                    autocomplete="off" required></textarea>
+            </div>
+
+            <div class="field">
+                <label for="date">Data</label>
+                <input id="date" name="date" type="date" required>
+            </div>
+
+            <div class="field">
+                <label for="amount">Valor</label>
+                <input id="amount" name="amount" type="number" min="0.01" step="0.01" placeholder="0,00"
+                    inputmode="decimal" required>
+            </div>
+
+            <button class="submit-button" type="submit">Salvar</button>
+        </form>
+
+        <p class="signup">Ainda não tem uma conta? <a href="criar-conta.html">Criar conta</a></p>
+    </main>
+    <script>
+        const loginForm = document.getElementById("login-form");
+        const transactionForm = document.getElementById("transaction-form");
+        const transactionHeading = document.getElementById("transaction-heading");
+
+        loginForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            loginForm.hidden = true;
+            transactionForm.hidden = false;
+            transactionHeading.focus();
+        });
+    </script>
+</body>
+
+</html>
